@@ -8,19 +8,6 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%A4%3C/text%3E%3C/svg%3E">
 </head>
 <body>
-<!--
-  CAMBIO PARA EL ÚLTIMO VIERNES (según el copy final, doc de la sesión de copywriting):
-  Después de la primera función, reemplazar SOLO el eyebrow, el h1 y el
-  párrafo de cierre del hero, y el texto/CTA de la sección de cierre antes
-  del formulario. Nada más cambia.
-
-  Eyebrow:  NOS QUEDA UN ÚLTIMO VIERNES
-  Headline: No necesito que cantes. Necesito que no lleguemos tarde.
-  Texto:    Llegamos hasta la última oportunidad. Este viernes necesitamos
-            volver a llenar el Karaoke y demostrar que esta historia
-            todavía merece continuar.
-  CTA:      QUIERO ESTAR EN EL ÚLTIMO VIERNES
--->
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
 
@@ -101,6 +88,12 @@ h1,h2,h3{text-wrap:balance; font-family:'Bungee',system-ui,sans-serif; font-weig
   padding:40px 16px; margin:18px 0;
 }
 .photo-slot.magenta{border-color:var(--magenta); background:var(--magenta-soft);}
+.photo-real{
+  display:block; width:100%; height:auto; border-radius:16px; margin:18px 0;
+  border:2px solid var(--cyan);
+}
+.photo-real.magenta{border-color:var(--magenta);}
+.photo-real.dual{border-color:var(--magenta); box-shadow:0 0 0 2px var(--cyan) inset;}
 .jimmy{
   border-left:3px solid var(--magenta); background:var(--magenta-soft); border-radius:0 12px 12px 0;
   padding:14px 20px; font-size:15px; color:var(--text-dim); margin:18px 0;
@@ -185,7 +178,8 @@ footer a{color:var(--text-dim);}
 
     <div class="letter">
       <p class="lead">Soy Laura, la hija de Elvis Lusardi. Y te agradezco mucho que te estés tomando unos minutos para leerme.</p>
-      <div class="photo-slot magenta" data-photo="Foto 4 · Laura (con el NO ME VA de la pantalla detrás, intacto)">FOTO PENDIENTE: Laura (borde magenta) — mantener el "NO ME VA" de la pantalla tal cual</div>
+      <img class="photo-real magenta" src="fotos/landing-01-laura.webp" alt="Laura cantando en el escenario, con el cartel &quot;NO ME VA&quot; proyectado detrás">
+
       <p>Mi papá convirtió un viejo bar en su refugio, su familia y su propio reino. Ahora estamos a punto de perderlo.</p>
       <p>Nos quedan dos viernes para demostrar que el Karaoke todavía puede llenarse. Y el primero es este.</p>
       <p><strong>Vos podés ayudarnos.</strong> Si puedo contar con vos, tocá el botón.</p>
@@ -221,7 +215,8 @@ footer a{color:var(--text-dim);}
       <p>No te estoy pidiendo que creas en la leyenda de Elvis.</p>
       <p><strong>Te estoy pidiendo que nos ayudes a escribir lo que viene después.</strong></p>
     </div>
-    <div class="photo-slot" data-photo="Foto 1 · Manu a la izquierda y Mike a la derecha">FOTO PENDIENTE: Manu y Mike (borde cian)</div>
+    <img class="photo-real" src="fotos/landing-02-manu-mike.webp" alt="Manu y Mike charlando en la barra de Kubo Bar">
+
     <div class="jimmy">Abajo dejé un formulario para que lo llenes. Entre todos los que se anoten vamos a hacer un sorteo, y los primeros 10 que reserven su lugar ahora tienen doble chance. Lo que sea para que mi papá pueda seguir viviendo de lo que siempre soñó. Ayudame a demostrarle a Jimmy que todavía hay personas dispuestas a acompañarnos. Y que esta historia todavía no terminó.</div>
   </section>
 
@@ -312,7 +307,8 @@ footer a{color:var(--text-dim);}
     <div id="thanks">
       <div class="big-check">✓</div>
       <h2 style="text-align:center;">Ya anoté tu nombre</h2>
-      <div class="photo-slot" data-photo="Foto 7 · Casi todo el elenco">FOTO PENDIENTE: casi todo el elenco (borde magenta y cian)</div>
+      <img class="photo-real dual" src="fotos/landing-03-elenco.webp" alt="Casi todo el elenco de El Rey del Karaoke">
+
       <div class="letter" style="text-align:left;">
         <p>Gracias.</p>
         <p>Puede parecer un formulario más, pero para mí acaba de convertirse en una persona que está considerando acompañarnos.</p>
