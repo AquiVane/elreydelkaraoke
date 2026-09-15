@@ -240,7 +240,7 @@ footer a{color:var(--text-dim);}
     </div>
     <div class="qa">
       <h3>¿Te preocupa el precio?</h3>
-      <p>No te preocupes, la entrada sale menos que una pizza grande de muzzarella. Reservá tu entrada para no quedarte sin cupo para vos y tus amigos o para vos solo.</p>
+      <p>No te preocupes, es a la gorra: no hay entrada fija, dejás lo que puedas o quieras. Completá el formulario para reservar tu lugar y no quedarte sin cupo, para vos y tus amigos o para vos solo.</p>
     </div>
   </section>
 
@@ -408,6 +408,7 @@ document.getElementById('leadform').addEventListener('submit', function(e){
       '<h2 style="margin:0 0 4px;">Decime tu canción</h2>' +
       '<p style="color:var(--text-dim); font-size:14px; margin:0 0 16px;">Lady Britney Madonna quiere saber qué vas a cantar este viernes.</p>' +
       '<form id="cancionform">' +
+        '<p style="font-size:13px; color:var(--text-dim); margin:0 0 14px;">¿No sabés qué cantar? <a href="https://docs.google.com/document/d/151BgUQsBmaJ9jvYv4SAU72VQQtQO8wPk1c4AdccuWZQ/edit" target="_blank" rel="noopener">Mirá la lista de canciones disponibles</a>.</p>' +
         '<label for="c-cancion">Canción</label>' +
         '<input id="c-cancion" type="text" required placeholder="Nombre del tema">' +
         '<label for="c-artista">Artista</label>' +
@@ -421,8 +422,7 @@ document.getElementById('leadform').addEventListener('submit', function(e){
     '<div id="cancionthanks" style="display:none;">' +
       '<div class="big-check">✓</div>' +
       '<h2 style="text-align:center;">Anotado</h2>' +
-      '<p style="text-align:center; color:var(--text-dim);">Ya tengo tu canción. Nos vemos arriba del escenario.</p>' +
-      '<a class="btn" href="https://www.passline.com/eventos/el-rey-del-karaoke-1809" target="_blank" rel="noopener" style="margin-top:18px;">Confirmar mi entrada en Passline</a>' +
+      '<p style="text-align:center; color:var(--text-dim);">Ya tengo tu canción. Con tu reserva ya está, no necesitás nada más. Nos vemos arriba del escenario el viernes a las 20:30.</p>' +
     '</div>';
 
   document.getElementById('cancionform').addEventListener('submit', function(e){
