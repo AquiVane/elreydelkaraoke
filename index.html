@@ -296,7 +296,12 @@ footer a{color:var(--text-dim);}
           <option value="no">No, esta vez prefiero mirar</option>
         </select>
 
-        <button class="btn" type="submit" style="margin-top:20px; border:none;">Laura, sí, anotanos</button>
+        <label style="display:flex; align-items:flex-start; gap:8px; margin-top:18px; cursor:pointer; font-family:'Manrope'; font-size:12.5px; color:var(--text-dim); text-transform:none; letter-spacing:normal;">
+          <input type="checkbox" id="f-marketing" checked style="margin-top:2px; width:16px; height:16px; flex-shrink:0; accent-color:var(--magenta);">
+          <span>Acepto los <a href="#" onclick="return false;" style="color:var(--cyan);">términos y condiciones</a> y el tratamiento de mis datos según la <a href="#" onclick="return false;" style="color:var(--cyan);">política de privacidad</a>, y autorizo a que me manden mails promocionales con novedades de El Rey del Karaoke.</span>
+        </label>
+
+        <button class="btn" type="submit" style="margin-top:16px; border:none;">Laura, sí, anotanos</button>
         <p id="form-error" style="display:none; color:var(--magenta); font-size:13.5px; margin:10px 0 0; text-align:center;">No pudimos registrarte, probá de nuevo en un momento.</p>
       </form>
     </div>
@@ -369,6 +374,7 @@ document.getElementById('leadform').addEventListener('submit', function(e){
   var email = document.getElementById('f-email').value.trim();
   var invitados = document.getElementById('f-invitados').value;
   var quiereCantar = document.getElementById('f-cantar').value;
+  var aceptaMarketing = document.getElementById('f-marketing').checked;
   var errorMsg = document.getElementById('form-error');
   var submitBtn = e.target.querySelector('button[type="submit"]');
 
@@ -378,7 +384,7 @@ document.getElementById('leadform').addEventListener('submit', function(e){
   fetch(WORKER_BASE + '/api/reserva', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({ nombre: nombre, apellido: apellido, email: email, invitados: invitados, quiere_cantar: quiereCantar })
+    body: JSON.stringify({ nombre: nombre, apellido: apellido, email: email, invitados: invitados, quiere_cantar: quiereCantar, acepta_marketing: aceptaMarketing })
   }).then(function(res){
     if (!res.ok) throw new Error('bad status');
     window.location.href = 'gracias.html';
