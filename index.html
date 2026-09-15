@@ -147,9 +147,6 @@ input:focus, select:focus{outline:2px solid var(--cyan); outline-offset:1px;}
 .namerow{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
 .namerow > div{min-width:0;}
 
-#thanks{display:none;}
-#thanks.show{display:block;}
-#formview.hide{display:none;}
 .big-check{
   width:56px; height:56px; border-radius:50%; background:var(--cyan-soft); border:1px solid var(--cyan);
   display:flex; align-items:center; justify-content:center; font-size:26px; margin:0 auto 14px; color:var(--cyan);
@@ -303,21 +300,6 @@ footer a{color:var(--text-dim);}
         <p id="form-error" style="display:none; color:var(--magenta); font-size:13.5px; margin:10px 0 0; text-align:center;">No pudimos registrarte, probá de nuevo en un momento.</p>
       </form>
     </div>
-
-    <div id="thanks">
-      <div class="big-check">✓</div>
-      <h2 style="text-align:center;">Ya anoté tu nombre</h2>
-      <img class="photo-real dual" src="fotos/landing-03-elenco.webp" alt="Casi todo el elenco de El Rey del Karaoke">
-
-      <div class="letter" style="text-align:left;">
-        <p>Gracias.</p>
-        <p>Puede parecer un formulario más, pero para mí acaba de convertirse en una persona que está considerando acompañarnos.</p>
-        <p>En los próximos minutos vas a recibir un mail con la información necesaria para organizar la salida. Ahí te voy a contar dónde queda el bar, cómo llegar, qué podés comer y tomar, a qué hora conviene llegar y cómo confirmar tu entrada.</p>
-        <p>Revisá también las carpetas de promociones o spam. A veces mis mails se pierden ahí. Jimmy probablemente tenga algo que ver.</p>
-        <p style="margin-top:22px;">Nos vemos del otro lado.<br><strong>Laura</strong></p>
-      </div>
-      <a class="btn" href="https://www.passline.com/eventos/el-rey-del-karaoke" target="_blank" rel="noopener" style="margin-top:18px;">Confirmar mi entrada en Passline</a>
-    </div>
   </section>
 
   <section id="como-llegar">
@@ -399,13 +381,9 @@ document.getElementById('leadform').addEventListener('submit', function(e){
     body: JSON.stringify({ nombre: nombre, apellido: apellido, email: email, invitados: invitados, quiere_cantar: quiereCantar })
   }).then(function(res){
     if (!res.ok) throw new Error('bad status');
-    document.getElementById('formview').classList.add('hide');
-    document.getElementById('thanks').classList.add('show');
-    document.getElementById('thanks').scrollIntoView({behavior:'smooth', block:'start'});
+    window.location.href = 'gracias.html';
   }).catch(function(){
     errorMsg.style.display = 'block';
-    submitBtn.disabled = false;
-  }).then(function(){
     submitBtn.disabled = false;
   });
 });
@@ -438,7 +416,7 @@ document.getElementById('leadform').addEventListener('submit', function(e){
       '<div class="big-check">✓</div>' +
       '<h2 style="text-align:center;">Anotado</h2>' +
       '<p style="text-align:center; color:var(--text-dim);">Ya tengo tu canción. Nos vemos arriba del escenario.</p>' +
-      '<a class="btn" href="https://www.passline.com/eventos/el-rey-del-karaoke" target="_blank" rel="noopener" style="margin-top:18px;">Confirmar mi entrada en Passline</a>' +
+      '<a class="btn" href="https://www.passline.com/eventos/el-rey-del-karaoke-1809" target="_blank" rel="noopener" style="margin-top:18px;">Confirmar mi entrada en Passline</a>' +
     '</div>';
 
   document.getElementById('cancionform').addEventListener('submit', function(e){
