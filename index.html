@@ -1,12 +1,396 @@
-&lt;!doctype html&gt;
-&lt;html lang="es"&gt;
-&lt;head&gt;
-&lt;meta charset="utf-8"&gt;
-&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
-&lt;title&gt;Salvá el Karaoke — El Rey del Karaoke&lt;/title&gt;
-&lt;meta name="description" content="Nos quedan dos viernes para salvar El Rey del Karaoke en Kubo Bar, Palermo. Reservá tu lugar."&gt;
-&lt;/head&gt;
-&lt;body&gt;
-PLACEHOLDER_BODY
-&lt;/body&gt;
-&lt;/html&gt;
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salvá el Karaoke — El Rey del Karaoke</title>
+<meta name="description" content="Nos quedan dos viernes para salvar El Rey del Karaoke en Kubo Bar, Palermo. Reservá tu lugar.">
+</head>
+<body>
+<!--
+  CAMBIO PARA EL ÚLTIMO VIERNES (según el copy final, doc de la sesión de copywriting):
+  Después de la primera función, reemplazar SOLO el eyebrow, el h1 y el
+  párrafo de cierre del hero, y el texto/CTA de la sección de cierre antes
+  del formulario. Nada más cambia.
+
+  Eyebrow:  NOS QUEDA UN ÚLTIMO VIERNES
+  Headline: No necesito que cantes. Necesito que no lleguemos tarde.
+  Texto:    Llegamos hasta la última oportunidad. Este viernes necesitamos
+            volver a llenar el Karaoke y demostrar que esta historia
+            todavía merece continuar.
+  CTA:      QUIERO ESTAR EN EL ÚLTIMO VIERNES
+-->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+:root{
+  --bg:#0e0b12;
+  --bg-raised:#17121d;
+  --bg-raised-2:#1f1828;
+  --line:rgba(255,255,255,0.10);
+  --line-strong:rgba(255,255,255,0.20);
+  --text:#f3eee8;
+  --text-dim:#b6acc4;
+  --text-faint:#83788f;
+  --magenta:#ff3d8e;
+  --magenta-soft:rgba(255,61,142,0.16);
+  --cyan:#33e6d8;
+  --cyan-soft:rgba(51,230,216,0.14);
+  --gold:#ffc94a;
+  --gold-soft:rgba(255,201,74,0.16);
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:'Manrope',system-ui,sans-serif; padding:0 16px;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:""; position:fixed; inset:0;
+  background:
+    radial-gradient(ellipse 700px 450px at 10% -10%, var(--magenta-soft), transparent 60%),
+    radial-gradient(ellipse 700px 450px at 95% 0%, var(--cyan-soft), transparent 60%);
+  pointer-events:none; z-index:0;
+}
+a{color:var(--cyan);}
+h1,h2,h3{text-wrap:balance; font-family:'Bungee',system-ui,sans-serif; font-weight:400;}
+.wrap{max-width:640px; margin:0 auto; position:relative; z-index:1;}
+.gutter{padding-block:26px 60px;}
+
+/* top bar */
+.topbar{
+  position:sticky; top:0; z-index:30;
+  background:rgba(14,11,18,0.9); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  margin:0 -16px; padding:12px 16px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.brand{font-family:'Bungee'; font-size:14px; color:var(--text); display:flex; align-items:center; gap:8px;}
+.brand .dot{width:8px; height:8px; border-radius:50%; background:var(--magenta); box-shadow:0 0 10px var(--magenta);}
+.topcta{
+  font-family:'Space Mono',monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.04em;
+  background:var(--magenta); color:#1a0a12; padding:8px 14px; border-radius:999px; text-decoration:none;
+  border:none; cursor:pointer;
+}
+
+.eyebrow{
+  font-family:'Space Mono',monospace; font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--gold); display:inline-flex; align-items:center; gap:8px;
+  border:1px solid var(--gold-soft); background:var(--gold-soft); padding:5px 12px; border-radius:999px;
+}
+.hero{padding-top:8px;}
+.hero h1{
+  font-size:clamp(28px,7vw,40px); line-height:1.12; margin:16px 0 18px;
+  background:linear-gradient(92deg, var(--magenta), var(--cyan) 85%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+
+.letter p{font-size:16px; line-height:1.7; color:var(--text-dim); margin:0 0 16px;}
+.letter p:last-child{margin-bottom:0;}
+.letter strong{color:var(--text);}
+.letter .lead{color:var(--text); font-size:17px;}
+
+.pull{
+  border-left:3px solid var(--cyan); background:var(--cyan-soft); border-radius:0 12px 12px 0;
+  padding:16px 20px; font-size:17px; font-weight:700; color:var(--text); margin:22px 0;
+}
+.jimmy{
+  border-left:3px solid var(--magenta); background:var(--magenta-soft); border-radius:0 12px 12px 0;
+  padding:14px 20px; font-size:15px; color:var(--text-dim); margin:18px 0;
+}
+
+.ticket{
+  border:1px dashed var(--line-strong); border-radius:14px; background:var(--bg-raised);
+  display:flex; flex-wrap:wrap; overflow:hidden; margin:26px 0;
+}
+.ticket-cell{flex:1 1 130px; padding:13px 16px; border-right:1px dashed var(--line);}
+.ticket-cell:last-child{border-right:none;}
+.ticket-label{font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-faint); display:block; margin-bottom:4px;}
+.ticket-value{font-size:14.5px; font-weight:700;}
+.ticket-value.accent{color:var(--magenta);}
+
+.countdown{display:flex; gap:10px; margin:22px 0;}
+.cbox{flex:1; background:var(--bg-raised); border:1px solid var(--line-strong); border-radius:12px; text-align:center; padding:12px 4px;}
+.cbox .num{font-family:'Space Mono'; font-variant-numeric:tabular-nums; font-size:24px; font-weight:700; color:var(--cyan);}
+.cbox .lbl{font-size:10px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.06em; margin-top:2px;}
+
+.btn{
+  display:block; width:100%; text-align:center; font-family:'Manrope'; font-weight:800; font-size:16px;
+  background:linear-gradient(92deg, var(--magenta), #ff6fb0); color:#1a0a12; border:none;
+  padding:16px 20px; border-radius:14px; text-decoration:none; cursor:pointer;
+  box-shadow:0 8px 24px -8px rgba(255,61,142,0.55);
+}
+.btn.secondary{
+  background:transparent; color:var(--text-dim); border:1px solid var(--line-strong); box-shadow:none;
+  font-weight:600; font-size:13.5px; padding:10px 16px;
+}
+
+section{margin-top:46px; scroll-margin-top:20px;}
+section h2{font-size:clamp(20px,4vw,26px); margin:0 0 16px;}
+
+.qa{border-top:1px solid var(--line); padding:20px 0;}
+.qa:first-of-type{border-top:none;}
+.qa h3{font-family:'Manrope'; font-weight:800; font-size:15.5px; color:var(--gold); margin:0 0 8px; font-style:italic;}
+.qa p{font-size:14.5px; line-height:1.65; color:var(--text-dim); margin:0 0 8px;}
+.qa p:last-child{margin-bottom:0;}
+.qa p b{color:var(--text);}
+
+.card{background:var(--bg-raised); border:1px solid var(--line-strong); border-radius:18px; padding:26px 22px;}
+
+label{display:block; font-family:'Space Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--text-faint); margin:16px 0 6px;}
+label:first-of-type{margin-top:0;}
+input, select{
+  width:100%; background:var(--bg); border:1px solid var(--line-strong); border-radius:10px;
+  padding:12px 14px; font-family:'Manrope'; font-size:15px; color:var(--text);
+}
+input:focus, select:focus{outline:2px solid var(--cyan); outline-offset:1px;}
+.namerow{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+.namerow > div{min-width:0;}
+
+#thanks{display:none;}
+#thanks.show{display:block;}
+#formview.hide{display:none;}
+.big-check{
+  width:56px; height:56px; border-radius:50%; background:var(--cyan-soft); border:1px solid var(--cyan);
+  display:flex; align-items:center; justify-content:center; font-size:26px; margin:0 auto 14px; color:var(--cyan);
+}
+
+footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); text-align:center; color:var(--text-faint); font-size:12.5px;}
+footer a{color:var(--text-dim);}
+
+@media (max-width:480px){
+  .namerow{grid-template-columns:1fr;}
+  .countdown{gap:6px;}
+  .cbox .num{font-size:19px;}
+}
+</style>
+
+<div class="topbar wrap" style="max-width:640px;">
+  <span class="brand"><span class="dot"></span>EL REY DEL KARAOKE</span>
+  <a class="topcta" href="#form">Reservar</a>
+</div>
+
+<div class="wrap gutter">
+
+  <div class="hero">
+    <span class="eyebrow" id="hero-eyebrow">Solo nos quedan dos viernes para salvar el Karaoke</span>
+    <h1 id="hero-h1">Nos quedan dos viernes para demostrar que el Karaoke todavía importa.</h1>
+
+    <div class="letter">
+      <p class="lead">Soy Laura, la hija de Elvis Lusardi. Y te agradezco mucho que te estés tomando unos minutos para leerme.</p>
+      <p>Mi papá convirtió un viejo bar en su refugio, su familia y su propio reino. Ahora estamos a punto de perderlo.</p>
+      <p>Nos quedan dos viernes para demostrar que el Karaoke todavía puede llenarse. Y el primero es este.</p>
+      <p><strong>Vos podés ayudarnos.</strong> Si puedo contar con vos, tocá el botón.</p>
+    </div>
+
+    <a class="btn" href="#como" style="margin-top:8px;">Laura, contá conmigo</a>
+
+    <div class="ticket">
+      <div class="ticket-cell"><span class="ticket-label">Función</span><span class="ticket-value">Viernes · 20:30 hs</span></div>
+      <div class="ticket-cell"><span class="ticket-label">Lugar</span><span class="ticket-value">Kubo Bar</span></div>
+      <div class="ticket-cell"><span class="ticket-label">Dirección</span><span class="ticket-value accent">Serrano 1556</span></div>
+    </div>
+
+    <div class="countdown" id="countdown">
+      <div class="cbox"><div class="num" id="cd-d">–</div><div class="lbl">días</div></div>
+      <div class="cbox"><div class="num" id="cd-h">–</div><div class="lbl">hs</div></div>
+      <div class="cbox"><div class="num" id="cd-m">–</div><div class="lbl">min</div></div>
+      <div class="cbox"><div class="num" id="cd-s">–</div><div class="lbl">seg</div></div>
+    </div>
+  </div>
+
+  <section>
+    <h2>Si alguien te mandó hasta acá, mi plan está funcionando</h2>
+    <div class="letter">
+      <p>Quizás llegaste por Mike.</p>
+      <p>Por Sandra.</p>
+      <p>Por Manu, Le Drag o Lady Britney Madonna.</p>
+      <p>Quizás incluso por mi papá.</p>
+      <p>Y si fue Jimmy quien te trajo hasta acá… sinceramente, no sé qué estará tramando.</p>
+      <p>Les pedí ayuda a todos porque sola no puedo hacer que las mesas vuelvan a llenarse.</p>
+      <p>Mi papá todavía habla de sus años de gloria como si hubieran terminado ayer. Algunas historias son ciertas. Otras, probablemente, crecieron cada vez que las contó.</p>
+      <p>Pero hay algo que nunca exageró:</p>
+    </div>
+    <div class="pull">Cuando alguien toma el micrófono, este lugar vuelve a sentirse vivo.</div>
+    <div class="letter">
+      <p>Jimmy cree que llegó el momento de dejarlo atrás.</p>
+      <p>Yo todavía no.</p>
+      <p>Por eso estoy intentando salvar el Karaoke desde acá, usando internet, videos, mails y cualquier cosa que consiga que alguien nos escuche.</p>
+      <p>No te estoy pidiendo que creas en la leyenda de Elvis.</p>
+      <p><strong>Te estoy pidiendo que nos ayudes a escribir lo que viene después.</strong></p>
+    </div>
+    <div class="jimmy">Abajo dejé un formulario para que lo llenes. Entre todos los que se anoten vamos a hacer un sorteo, y los primeros 10 que reserven su lugar ahora tienen doble chance. Lo que sea para que mi papá pueda seguir viviendo de lo que siempre soñó. Ayudame a demostrarle a Jimmy que todavía hay personas dispuestas a acompañarnos. Y que esta historia todavía no terminó.</div>
+  </section>
+
+  <section>
+    <h2>Y sí, ya sé lo que estás pensando</h2>
+    <div class="qa">
+      <h3>"Justo este viernes trabajo hasta tarde. No llego a cambiarme."</h3>
+      <p>No importa. Podés venir con el traje de la oficina, con jean y zapatillas, con un gorro de Goofy o vestido de Spider-Man. Acá todos son bienvenidos como más les guste. Lo importante es que vos y tus amigos se diviertan.</p>
+      <p>Solo te pedimos un pequeño detalle: usá desodorante. Lo único que nos falta es que Jimmy también diga que el Karaoke huele mal.</p>
+    </div>
+    <div class="qa">
+      <h3>Vas a esperar a ver qué dicen tus amigos</h3>
+      <p>Si son indecisos, tomá vos la iniciativa ahora. En el peor de los casos, les regalaste una propuesta diferente. En el mejor, terminan viviendo una de esas noches que después recuerdan durante años.</p>
+    </div>
+    <div class="qa">
+      <h3>"No soy de los que les gusta cantar"</h3>
+      <p>No importa. Podés venir a cenar, tomar algo con tus amigos y disfrutar del show. Si durante la noche te dan ganas de elegir una canción, vas a poder hacerlo. Y si preferís escuchar cantar a los demás, también. Nadie te va a obligar a subir, bailar ni hacer algo que te incomode.</p>
+      <p><b>El micrófono está disponible. No es obligatorio.</b></p>
+    </div>
+    <div class="qa">
+      <h3>"¿Es solamente un karaoke?"</h3>
+      <p>No. Es una noche con show, personajes, música, comida y tragos en Plaza Serrano, Palermo. Podés vivirla como una salida con amigos y disfrutar todo desde tu lugar. Y si después aparece tu versión cantante de ducha, le damos el micrófono.</p>
+      <p>Y si por casualidad querés venir, pero no tenés con quién, no te preocupes: es el lugar ideal para conocer otras personas a las que les guste cantar o escuchar cantar.</p>
+    </div>
+    <div class="qa">
+      <h3>¿Te preocupa el precio?</h3>
+      <p>No te preocupes, la entrada sale menos que una pizza grande de muzzarella. Reservá tu entrada para no quedarte sin cupo para vos y tus amigos o para vos solo.</p>
+    </div>
+  </section>
+
+  <section id="como">
+    <h2>Prometer cantar, no es necesario</h2>
+    <div class="letter">
+      <p>Lo que sí necesito es poder mirar la lista y encontrar tu nombre.</p>
+      <p>Necesito mostrarle a mi papá que todavía hay personas dispuestas a entrar, sentarse alrededor de una mesa y escuchar una historia.</p>
+      <p><strong>Necesito demostrarle a Jimmy que esto todavía no terminó.</strong></p>
+    </div>
+    <div class="pull" id="cierre-texto">Este viernes a las 20:30 tenés una oportunidad de ayudarnos a salvar el Karaoke.</div>
+    <h2 style="margin-top:28px;">¿Cómo?</h2>
+    <p style="color:var(--text-dim); font-size:15px;">Completá el formulario y decime con cuántas personas te esperamos.</p>
+    <p style="color:var(--text); font-weight:700; font-size:15px;">Una noche diferente por menos de lo que cuestan dos tragos.</p>
+    <a class="btn" href="#form" style="margin-top:14px;">Ir al formulario</a>
+  </section>
+
+  <section class="card" id="form">
+    <div id="formview">
+      <h2 style="margin:0 0 4px;">¿Con cuántas personas te esperamos?</h2>
+      <form id="leadform">
+        <div class="namerow">
+          <div>
+            <label for="f-nombre">Nombre</label>
+            <input id="f-nombre" name="nombre" type="text" required autocomplete="given-name" placeholder="Tu nombre">
+          </div>
+          <div>
+            <label for="f-apellido">Apellido</label>
+            <input id="f-apellido" name="apellido" type="text" required autocomplete="family-name" placeholder="Tu apellido">
+          </div>
+        </div>
+
+        <label for="f-email">Email</label>
+        <input id="f-email" name="email" type="email" required autocomplete="email" placeholder="El email donde querés recibir la información">
+
+        <label for="f-invitados">Cantidad de personas</label>
+        <select id="f-invitados" name="invitados" required>
+          <option value="">Elegí una opción</option>
+          <option value="1">Voy solo/a, me encanta</option>
+          <option value="2">Somos 2</option>
+          <option value="3">Somos 3</option>
+          <option value="4">Somos 4</option>
+          <option value="5">Somos 5</option>
+          <option value="6">Somos 6</option>
+          <option value="7">Somos 7</option>
+          <option value="8">Somos 8</option>
+          <option value="9">Somos 9</option>
+          <option value="10">Somos 10</option>
+        </select>
+
+        <label for="f-cantar">¿Te anotamos en la lista para cantar?</label>
+        <select id="f-cantar" name="quiere_cantar">
+          <option value="no">No, esta vez prefiero mirar</option>
+          <option value="si">Sí, anotame</option>
+        </select>
+
+        <button class="btn" type="submit" style="margin-top:20px; border:none;">Laura, sí, anotanos</button>
+      </form>
+    </div>
+
+    <div id="thanks">
+      <div class="big-check">✓</div>
+      <h2 style="text-align:center;">Ya anoté tu nombre</h2>
+      <div class="letter" style="text-align:left;">
+        <p>Gracias.</p>
+        <p>Puede parecer un formulario más, pero para mí acaba de convertirse en una persona que está considerando acompañarnos.</p>
+        <p>En los próximos minutos vas a recibir un mail con la información necesaria para organizar la salida. Ahí te voy a contar dónde queda el bar, cómo llegar, qué podés comer y tomar, a qué hora conviene llegar y cómo confirmar tu entrada.</p>
+        <p>Revisá también las carpetas de promociones o spam. A veces mis mails se pierden ahí. Jimmy probablemente tenga algo que ver.</p>
+        <p style="margin-top:22px;">Nos vemos del otro lado.<br><strong>Laura</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    El Rey del Karaoke — obra inmersiva en Kubo Bar<br>
+    <a href="https://www.instagram.com/elreydelkaraoke2026" target="_blank" rel="noopener">@elreydelkaraoke2026</a>
+  </footer>
+</div>
+
+<script>
+(function(){
+  function nextFriday2030(){
+    var now = new Date();
+    var target = new Date(now);
+    var day = now.getDay();
+    var diff = (5 - day + 7) % 7;
+    target.setDate(now.getDate() + diff);
+    target.setHours(20,30,0,0);
+    if (target <= now){ target.setDate(target.getDate() + 7); }
+    return target;
+  }
+  var target = nextFriday2030();
+  function tick(){
+    var now = new Date();
+    var diff = Math.max(0, target - now);
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-d').textContent = d;
+    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+
+/* Worker real: elreydelkaraoke-worker (repo cosmart-workers). Puede
+   fallar todavía si el deploy no terminó -- por eso va en try/catch y
+   la UI avanza igual, nunca depende de que el worker responda. */
+var WORKER_BASE = 'https://elreydelkaraoke-worker.conglomeradocosmart.workers.dev';
+
+document.getElementById('leadform').addEventListener('submit', function(e){
+  e.preventDefault();
+  var nombre = document.getElementById('f-nombre').value.trim();
+  var apellido = document.getElementById('f-apellido').value.trim();
+  var email = document.getElementById('f-email').value.trim();
+  var invitados = document.getElementById('f-invitados').value;
+  var quiereCantar = document.getElementById('f-cantar').value;
+
+  fetch(WORKER_BASE + '/api/reserva', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({ nombre: nombre, apellido: apellido, email: email, invitados: invitados, quiere_cantar: quiereCantar })
+  }).catch(function(){ /* la UI sigue igual aunque el worker no responda */ });
+
+  document.getElementById('formview').classList.add('hide');
+  document.getElementById('thanks').classList.add('show');
+  document.getElementById('thanks').scrollIntoView({behavior:'smooth', block:'start'});
+});
+
+// Vista "elegí tu canción" -- queda como capacidad disponible por si
+// se comparte el link manualmente (ej. desde un DM de Instagram),
+// además del mail de Lady Britney Madonna que dispara el backend
+// cuando alguien responde "Sí" en el formulario de arriba.
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var token = params.get('cancion');
+  if (!token) return;
+  // Placeholder simple: la vista completa vivía en una versión anterior
+  // de esta landing. Si se vuelve a necesitar, reconstruir acá un mini
+  // formulario que POSTee { token, cancion, link } a WORKER_BASE + '/api/cancion'.
+})();
+</script>
+
+</body>
+</html>
